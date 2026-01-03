@@ -1,0 +1,106 @@
+/**StAuth10222: I Armand Amores, 000315902 certify that this material is my original work. No other person's work has been used without
+due acknowledgement. I have not made my work available to anyone else.*/
+.bookCard {
+  border: 1px solid #e1e8ed;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.bookCard:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.bookInfo {
+  flex: 1;
+}
+
+.title {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.author {
+  color: #7f8c8d;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.genre {
+  color: #7f8c8d;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.genreTag {
+  background-color: #ecf0f1;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  margin-left: 8px;
+}
+
+.detailsRow {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.detail {
+  color: #7f8c8d;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.description {
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.sidePanel {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+.metaInfo {
+  margin-top: 10px;
+  font-size: 0.85em;
+  color: #95a5a6;
+}
+
+.bookId {
+  margin-bottom: 4px;
+}
+
+.dateAdded {
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .sidePanel {
+    width: 100%;
+    min-width: auto;
+  }
+}

@@ -1,0 +1,49 @@
+/**StAuth10222: I Armand Amores, 000315902 certify that this material is my original work. No other person's work has been used without
+due acknowledgement. I have not made my work available to anyone else.*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.searchSection {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.genreGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.genreCard {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.genreCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  text-decoration: none;
+}
+
+.genreCard h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.genreCard p {
+  color: #7f8c8d;
+  margin: 0;
+}
+

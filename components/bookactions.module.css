@@ -1,0 +1,145 @@
+/**StAuth10222: I Armand Amores, 000315902 certify that this material is my original work. No other person's work has been used without
+due acknowledgement. I have not made my work available to anyone else.*/
+.actionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Rating Styles */
+.ratingSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ratingDisplay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ratingLabel {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.ratingValue {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.starsContainer {
+  display: flex;
+  gap: 4px;
+}
+
+.ratingButton {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 40px;
+  transition: all 0.2s;
+}
+
+.ratingButton:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.ratingButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.updatingText {
+  color: #7f8c8d;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+/* Delete Styles */
+.deleteSection {
+  margin-top: 5px;
+}
+
+.deleteButton {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.deleteButton:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+.deleteButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.confirmDialog {
+  background-color: #f8f9fa;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.confirmText {
+  margin: 0 0 12px 0;
+  color: #2c3e50;
+  font-weight: 500;
+  text-align: center;
+}
+
+.confirmButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.confirmButton {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+.confirmButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  background-color: #95a5a6;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: #7f8c8d;
+}
+
+.cancelButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

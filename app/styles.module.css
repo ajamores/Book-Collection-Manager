@@ -1,0 +1,132 @@
+/**StAuth10222: I Armand Amores, 000315902 certify that this material is my original work. No other person's work has been used without
+due acknowledgement. I have not made my work available to anyone else.*/
+/* Table styles  */
+.items_table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.items_table td, .items_table th {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.items_table th {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: 600;
+}
+
+.items_table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.items_table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Home Page Styles */
+.homeHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.homeTitle {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.homeSubtitle {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.booksSection {
+  margin-top: 3rem;
+}
+
+.booksHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.booksHeader h2 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+}
+
+.emptyStateMessage {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.emptyStateSubtext {
+  color: #95a5a6;
+  line-height: 1.5;
+}
+
+.booksList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.genreButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.genreButton {
+  padding: 0.5rem 1rem;
+  background: #3498db;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.genreButton:hover {
+  background-color: #2980b9;
+  text-decoration: none;
+}
+
+.infoBox {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: #f1f1f1;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+}
+
+.infoBox h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.infoBox ul {
+  color: #7f8c8d;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+}
+
+.infoBox li {
+  margin-bottom: 0.5rem;
+}

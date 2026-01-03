@@ -1,0 +1,147 @@
+/**StAuth10222: I Armand Amores, 000315902 certify that this material is my original work. No other person's work has been used without
+due acknowledgement. I have not made my work available to anyone else.*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+}
+
+.filterNav {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  
+  h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+}
+
+.genreButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.navButton {
+  padding: 0.6rem 1.2rem;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: normal;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  
+  &:hover {
+    text-decoration: none;
+    opacity: 0.9;
+  }
+}
+
+.allButton {
+  background: #2c3e50;
+  font-weight: bold;
+}
+
+.genreButton {
+  background: #3498db;
+}
+
+.activeGenreButton {
+  background: #e74c3c;
+  font-weight: bold;
+}
+
+.statsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #ecf0f1;
+  border-radius: 8px;
+  
+  p {
+    margin: 0;
+  }
+}
+
+.bookCount {
+  font-weight: bold;
+  
+  span {
+    color: #e74c3c;
+  }
+}
+
+
+.emptyState {
+  padding: 3rem;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+  
+  p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    padding: 0.7rem 1.5rem;
+    background: #3498db;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    
+    &:hover {
+      background: #2980b9;
+    }
+  }
+}
+
+.bookList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+.errorContainer {
+  text-align: center;
+  padding: 3rem;
+  
+  h2 {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    color: #3498db;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
