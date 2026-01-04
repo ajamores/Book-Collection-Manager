@@ -1,6 +1,7 @@
 /**StAuth10222: I Armand Amores, 000315902 certify that this material is my original work. No other person's work has been used without
 due acknowledgement. I have not made my work available to anyone else.*/
 
+import Link from 'next/link';
 import { BookItem } from '../../../../components/BookItem';
 import { Book } from '../../../types';
 import styles from './genre.module.css';
@@ -11,6 +12,14 @@ import styles from './genre.module.css';
  */
 interface FilterPageProps {
   params: Promise<{genre: string;}>;
+}
+
+// search/filter/[genre]/page.tsx
+
+export async function generateStaticParams() {
+  // Example genres; you should replace these with your actual genres or fetch from data.
+  const genres = ['fiction', 'sci-fi', 'fantasy', 'mystery', 'non-fiction'];
+  return genres.map((genre) => ({ genre }));
 }
 
 /**
@@ -30,9 +39,10 @@ export default async function FilterPage({ params }: FilterPageProps) {
   if (!genres.includes(genre)) {
     return (
       <div className={styles.errorContainer}>
-        <h2>Genre not found: "{genre}"</h2>
+        <h2>Genre not found: &quot;{genre}&quot;</h2>
         <p>Available genres: {genres.join(', ')}</p>
-        <a href="/">Go back to home</a>
+        {/* <a href="/">Go back to home</a> */}
+        <Link href="/">Go back to home</Link>
       </div>
     );
   }
@@ -67,9 +77,10 @@ export default async function FilterPage({ params }: FilterPageProps) {
       {/* If no books found in genre, display empty state */}
       {books.length === 0 ? (
         <div className={styles.emptyState}>
-          <p>No books found in the "{displayGenre}" genre.</p>
+          <p>No books found in the &quot;{displayGenre}&quot; genre.</p>
           <p>Try adding a {genre} book using the form on the home page!</p>
-          <a href="/">Go to Home Page</a>
+          {/* <a href="/">Go to Home Page</a> */}
+          <Link href="/">Go back to home</Link>
         </div>
       ) : (
         <>
