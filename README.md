@@ -6,7 +6,7 @@ Built as a course assignment for the Mohawk College Advanced Diploma in Computer
 
 ![Adding, rating, deleting and filtering books](docs/demo.gif)
 
-*Recorded by the Playwright suite. Every run captures video, so the clip above is a by-product of the tests rather than a staged demo.*
+*Recorded by `tests/e2e/journey.spec.ts`. Every Playwright run captures video, so the clip above is a by-product of the suite rather than a staged demo.*
 
 ---
 
@@ -158,7 +158,7 @@ Playwright covers both halves of the app: the API directly, and the UI through a
 
 ```bash
 npx playwright install chromium   # once
-npm test                          # 35 tests
+npm test                          # 36 tests
 npm run test:ui                   # watch them run
 npm run test:report               # open the HTML report
 ```
@@ -168,11 +168,13 @@ Playwright starts both servers itself, so nothing needs to be running first. The
 | Project | Count | Covers |
 |---|---|---|
 | `api` | 20 | The five endpoints: status codes, validation, 404s, rating boundaries at `-1`, `0`, `3`, `5` and `6` |
-| `e2e` | 15 | Add, rate, delete and filter through the browser, plus the form's client-side validation |
+| `e2e` | 16 | Add, rate, delete and filter through the browser, plus the form's client-side validation and one full walkthrough |
 
 Two things worth pointing out:
 
 **A known bug is recorded as a test, not a comment.** `GET /books` accepts `minRating` and silently ignores it. Rather than describe that in prose, the suite asserts the behaviour the endpoint *should* have and marks it `test.fail()`. The run stays green while the bug is on the record, and the moment somebody fixes it the test starts passing and Playwright flags it as an unexpected pass. The bug cannot be quietly forgotten or quietly fixed.
+
+**A hydration race the suite had to handle.** `HeaderNav` uses a plain `<a href="/">` rather than `next/link`, so navigating home is a full document load. The delete button is in the server-rendered HTML immediately, but it belongs to a client component, and a click that lands before React hydrates does nothing. The walkthrough retries the click inside `expect(...).toPass()` rather than sleeping for an arbitrary interval.
 
 **Scoping to one book without adding test ids.** Next.js compiles CSS Modules to class names like `bookitem_bookCard__a1b2c3`, so `[class*="bookCard"]` filtered by the card's heading reaches a single book card without touching the components to add `data-testid` attributes.
 

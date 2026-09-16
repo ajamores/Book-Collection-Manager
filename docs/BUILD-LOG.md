@@ -15,6 +15,7 @@ All of it, from a spec I gave it in conversation:
 - `tests/global-teardown.ts`
 - `tests/api/books.spec.ts` — 20 tests
 - `tests/e2e/collection.spec.ts` — 15 tests
+- `tests/e2e/journey.spec.ts` — one full walkthrough, which is also the demo clip
 - The `DB_PATH` change in `api/db.js`
 - The README's Tests section
 - The demo GIF, converted with ffmpeg from the recorded run
@@ -65,6 +66,32 @@ Two things worth remembering from it:
 2. Reading the response body would have taken thirty seconds and saved three
    wrong theories. I guessed at causes before looking at what the server
    actually said.
+
+---
+
+## The second bug: a hydration race
+
+The walkthrough failed on its first run at the delete step. The screenshot
+showed the book added and rated correctly, with the **Delete Book** button
+still sitting there -- the confirmation had never opened.
+
+`HeaderNav` uses a plain `<a href="/">` instead of `next/link`, so going Home
+is a full document load rather than a client-side transition. The button
+appears in the server-rendered HTML straight away, but it lives in a client
+component: until React hydrates and attaches the handler, clicking it does
+nothing and reports no error.
+
+Handled with Playwright's retry block rather than a fixed wait:
+
+```ts
+await expect(async () => {
+  await deleteButton.click();
+  await expect(page.getByText(`Delete "Dune"?`)).toBeVisible({ timeout: 1000 });
+}).toPass();
+```
+
+Looking at the failure screenshot took about ten seconds and pointed straight
+at the cause, which is the opposite of how the first bug went.
 
 ---
 
