@@ -108,6 +108,14 @@ at the cause, which is the opposite of how the first bug went.
   specs. Tests use unique titles and relative assertions rather than exact
   counts, so they tolerate leftover state, but parallel writes to one SQLite
   file are not worth the trouble here.
+- **The demo clip is paced in post, not in the test.** The first recording
+  looked robotic because `fill()` drops a whole string in at once.
+  `pressSequentially` with a 55ms delay fixed the typing, but
+  `test.use({ launchOptions: { slowMo } })` made almost no difference to the
+  recording -- 9.2s became 10.3s -- so rather than leave config in the repo
+  that does not do what it claims, the clip is slowed with ffmpeg
+  (`setpts=1.7*PTS`) and the test stays fast. Pacing is a presentation choice;
+  it does not belong in the test suite.
 - **Separate `api` and `e2e` projects.** The API tests need no browser and
   finish in about ten seconds; keeping them apart means they can be run alone.
 

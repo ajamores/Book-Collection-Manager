@@ -9,6 +9,13 @@ import { test, expect, Page } from '@playwright/test';
  */
 const TITLE = 'Dune';
 
+// This test doubles as the README demo, so the text fields are typed a
+// character at a time rather than filled in one go -- it reads as a person
+// using the app instead of a script. The clip itself is slowed in post with
+// ffmpeg; see docs/BUILD-LOG.md.
+const type = async (page: Page, selector: string, value: string) =>
+  page.locator(selector).pressSequentially(value, { delay: 55 });
+
 const card = (page: Page, title: string) =>
   page.locator('[class*="bookCard"]').filter({ has: page.getByRole('heading', { name: title, exact: true }) });
 
@@ -17,12 +24,12 @@ test('a reader adds a book, rates it, finds it by genre and removes it', async (
   await expect(page.getByRole('heading', { name: 'Book Collection', exact: true })).toBeVisible();
 
   // Add it.
-  await page.fill('#title', TITLE);
-  await page.fill('#author', 'Frank Herbert');
+  await type(page, '#title', TITLE);
+  await type(page, '#author', 'Frank Herbert');
   await page.selectOption('#genre', 'sci-fi');
-  await page.fill('#year', '1965');
-  await page.fill('#pages', '412');
-  await page.fill('#description', 'A desert planet, a noble house in exile, and the empire that depends on its spice.');
+  await type(page, '#year', '1965');
+  await type(page, '#pages', '412');
+  await type(page, '#description', 'A desert planet, a noble house in exile, and the empire that depends on its spice.');
   await page.getByRole('button', { name: 'Add Book' }).click();
 
   const dune = card(page, TITLE);
