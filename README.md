@@ -4,6 +4,10 @@ A small full-stack application for keeping a personal library: add books, rate t
 
 Built as a course assignment for the Mohawk College Advanced Diploma in Computer Systems Technology (Software Development), January 2026. Published here as a portfolio piece.
 
+![Adding, rating, deleting and filtering books](docs/demo.gif)
+
+*Recorded by the Playwright suite. Every run captures video, so the clip above is a by-product of the tests rather than a staged demo.*
+
 ---
 
 ## Why it is built this way
@@ -148,13 +152,38 @@ api/
 
 ---
 
+## Tests
+
+Playwright covers both halves of the app: the API directly, and the UI through a real browser.
+
+```bash
+npx playwright install chromium   # once
+npm test                          # 35 tests
+npm run test:ui                   # watch them run
+npm run test:report               # open the HTML report
+```
+
+Playwright starts both servers itself, so nothing needs to be running first. The API is pointed at a throwaway SQLite file, so a test run never touches `api/database.db`.
+
+| Project | Count | Covers |
+|---|---|---|
+| `api` | 20 | The five endpoints: status codes, validation, 404s, rating boundaries at `-1`, `0`, `3`, `5` and `6` |
+| `e2e` | 15 | Add, rate, delete and filter through the browser, plus the form's client-side validation |
+
+Two things worth pointing out:
+
+**A known bug is recorded as a test, not a comment.** `GET /books` accepts `minRating` and silently ignores it. Rather than describe that in prose, the suite asserts the behaviour the endpoint *should* have and marks it `test.fail()`. The run stays green while the bug is on the record, and the moment somebody fixes it the test starts passing and Playwright flags it as an unexpected pass. The bug cannot be quietly forgotten or quietly fixed.
+
+**Scoping to one book without adding test ids.** Next.js compiles CSS Modules to class names like `bookitem_bookCard__a1b2c3`, so `[class*="bookCard"]` filtered by the card's heading reaches a single book card without touching the components to add `data-testid` attributes.
+
+---
+
 ## Known limitations
 
 Written down deliberately. These are the things I would fix before calling it finished:
 
 - **The API URL is hardcoded.** `http://localhost:4000` appears in four front-end files. It belongs in an environment variable, which is also what would be needed to deploy it anywhere.
-- **`/books` accepts filters it ignores.** The route destructures `year`, `minRating` and `search` from the query string, but only `genre` is ever used to build the `WHERE` clause. The other three are dead parameters — a caller passing `?minRating=4` gets every book back and no indication that the filter was dropped. Either wire them up or stop accepting them.
-- **No automated tests.** There is nothing standing between a change and a regression. The five endpoints are the obvious place to start, and the rating boundary cases (`-1`, `0`, `5`, `6`) are the obvious first tests.
+- **`/books` accepts filters it ignores.** The route destructures `year`, `minRating` and `search` from the query string, but only `genre` is ever used to build the `WHERE` clause. The other three are dead parameters — a caller passing `?minRating=4` gets every book back and no indication that the filter was dropped. Either wire them up or stop accepting them. Covered by an expected-failure test, so fixing it will make the suite tell you.
 - **`api/database.db` is committed.** `db.js` recreates and seeds the database on first run, so the checked-in file is redundant and will drift from whatever is in the repo.
 - **No validation beyond the required fields.** `year` and `pages` are parsed with `parseInt` and stored without a sanity check; a book published in the year 50000 with -3 pages is accepted.
 - **Errors are logged, not surfaced.** If the API is down, the server components catch the failure, log to the console and render an empty collection. The user sees "no books" rather than "could not reach the server", which are very different problems.

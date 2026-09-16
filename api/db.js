@@ -2,7 +2,10 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 // Connect to SQLite database
-const db = new sqlite3.Database(path.join(__dirname, 'database.db'));
+// DB_PATH lets the test run point at a throwaway database instead of the
+// development one. Defaults to the original location when unset.
+const dbPath = process.env.DB_PATH || path.join(__dirname, 'database.db');
+const db = new sqlite3.Database(dbPath);
 
 // Initialize database with books table
 db.serialize(() => {
