@@ -1,5 +1,3 @@
-/**StAuth10222: I Armand Amores, 000315902 certify that this material is my original work. No other person's work has been used without
-due acknowledgement. I have not made my work available to anyone else.*/
 import { BookForm } from '../components/BookForm';
 import { BookItem } from '../components/BookItem';
 import styles from './styles.module.css';

@@ -1,6 +1,3 @@
-/**StAuth10222: I Armand Amores, 000315902 certify that this material is my original work. No other person's work has been used without
-due acknowledgement. I have not made my work available to anyone else.*/
-
 import type { Metadata } from 'next';
 import './globals.css';
 import { HeaderNav } from '../components/HeaderNav';
